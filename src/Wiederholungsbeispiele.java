@@ -47,9 +47,23 @@ public class Wiederholungsbeispiele {
         }
 
     }
+
+    static double durchschnitt(int[] werte)
+    {
+        double sum = 0;
+        for(int w : werte)
+        {
+            sum += w; //sum = sum + w;
+        }
+        return sum / werte.length;
+    }
+
     public static void main(String[] args)
     {
-        lottoStatistik();
+        //lottoStatistik();
+        int[] a = {1,454,2,6,3,8};
+        double durch = durchschnitt(a);
+        System.out.printf("Durchschnitt: %.2f ", durch);
     }
 
 }
