@@ -27,11 +27,11 @@ public class Wiederholungsbeispiele {
         return lz; //gib das erstellte Array zurueck
     }
 
-    static void lottoStatistik()
+    static int[] lottoStatistik(int anzahl)
     {
         int[] statistik = new int[46];
 
-        for (int i = 0; i < 5000;i++)
+        for (int i = 0; i < anzahl;i++)
         {
             int[] lz = lottoZahlen();
 
@@ -45,7 +45,7 @@ public class Wiederholungsbeispiele {
         {
             System.out.printf("%d : %d %n", i, statistik[i]);
         }
-
+        return statistik;
     }
 
     static double durchschnitt(int[] werte)
@@ -58,12 +58,28 @@ public class Wiederholungsbeispiele {
         return sum / werte.length;
     }
 
+    static void lottoAuswertung(int[] lottoStat)
+    {
+        double sum = 0;
+        for (int ls : lottoStat)
+        {
+            sum += ls;
+        }
+        double durch = sum / lottoStat.length -1;
+        System.out.println("Durchschnitt:" + durch);
+        for (int i = 1; i < lottoStat.length;i++)
+        {
+            int ls = lottoStat[i];
+            System.out.printf("%d:  %.2f %n", i, Math.abs(ls - durch));
+        }
+    }
     public static void main(String[] args)
     {
-        //lottoStatistik();
-        int[] a = {1,454,2,6,3,8};
-        double durch = durchschnitt(a);
-        System.out.printf("Durchschnitt: %.2f ", durch);
+        int[] lottoStat = lottoStatistik(5000);
+        lottoAuswertung(lottoStat);
+        //int[] a = {1,454,2,6,3,8};
+        //double durch = durchschnitt(a);
+        //System.out.printf("Durchschnitt: %.2f ", durch);
     }
 
 }
